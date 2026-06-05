@@ -1,1 +1,621 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>М019 — Профильный английский</title>
 
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(135deg,#e3f2fd,#f1f8e9);
+      color:#1b1b1b;
+    }
+
+    .wrapper{
+      max-width:950px;
+      margin:auto;
+      padding:16px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,#1565c0,#43a047);
+      color:white;
+      padding:28px 20px;
+      border-radius:22px;
+      text-align:center;
+      margin-bottom:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero h1{
+      margin:0 0 12px;
+      font-size:30px;
+      line-height:1.2;
+    }
+
+    .hero p{
+      margin:8px 0;
+      font-size:16px;
+      line-height:1.5;
+    }
+
+    .badge{
+      display:inline-block;
+      background:white;
+      color:#1565c0;
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:bold;
+      margin-top:12px;
+      font-size:14px;
+    }
+
+    .telegram-promo{
+      background:#ffffff;
+      border:2px solid #229ED9;
+      padding:22px;
+      border-radius:20px;
+      text-align:center;
+      margin-bottom:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .telegram-promo h2{
+      color:#1565c0;
+      margin-top:0;
+      font-size:22px;
+    }
+
+    .telegram-promo p{
+      line-height:1.5;
+      font-size:16px;
+      margin:8px 0;
+    }
+
+    .promo-btn{
+      display:block;
+      text-decoration:none;
+      background:#229ED9;
+      color:white;
+      padding:14px;
+      border-radius:14px;
+      margin-top:14px;
+      font-weight:bold;
+      font-size:17px;
+    }
+
+    .card{
+      background:white;
+      padding:22px;
+      border-radius:20px;
+      margin-bottom:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .card h2{
+      margin-top:0;
+      color:#1565c0;
+      font-size:22px;
+    }
+
+    .section-title{
+      background:#e3f2fd;
+      border-left:5px solid #1565c0;
+      padding:14px;
+      border-radius:14px;
+      margin-bottom:18px;
+    }
+
+    .question{
+      background:#f7f7f7;
+      padding:18px;
+      border-radius:16px;
+      margin-bottom:16px;
+      border-left:5px solid #43a047;
+    }
+
+    .question b{
+      display:block;
+      margin-bottom:12px;
+      font-size:16px;
+      line-height:1.5;
+    }
+
+    label{
+      display:block;
+      background:white;
+      padding:12px;
+      border-radius:12px;
+      margin:8px 0;
+      border:1px solid #ddd;
+      cursor:pointer;
+      line-height:1.4;
+    }
+
+    label:hover{
+      background:#e8f5e9;
+    }
+
+    input[type="checkbox"]{
+      margin-right:8px;
+      transform:scale(1.1);
+    }
+
+    button{
+      width:100%;
+      background:#1565c0;
+      color:white;
+      border:none;
+      padding:16px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:18px;
+      font-weight:bold;
+      margin-top:10px;
+    }
+
+    button:hover{
+      background:#0d47a1;
+    }
+
+    .result-box{
+      background:#e8f5e9;
+      border:2px solid #43a047;
+      padding:22px;
+      border-radius:20px;
+      text-align:center;
+      margin-bottom:18px;
+    }
+
+    .result-box h2{
+      margin-top:0;
+      color:#2e7d32;
+    }
+
+    .correct{
+      color:green;
+      font-weight:bold;
+    }
+
+    .wrong{
+      color:red;
+      font-weight:bold;
+    }
+
+    .explanation{
+      background:#f1f8e9;
+      padding:12px;
+      margin:10px 0 18px;
+      border-radius:12px;
+      line-height:1.5;
+    }
+
+    .source-moment{
+      background:#fffde7;
+      border-left:4px solid #fbc02d;
+      padding:10px;
+      border-radius:10px;
+      margin-top:8px;
+      line-height:1.5;
+    }
+
+    .contact-box{
+      background:#ffffff;
+      border:2px solid #1565c0;
+      padding:22px;
+      border-radius:20px;
+      text-align:center;
+      margin-bottom:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .contact-box h2{
+      color:#1565c0;
+      margin-top:0;
+    }
+
+    .contact-btn{
+      display:block;
+      text-decoration:none;
+      color:white;
+      padding:14px;
+      border-radius:14px;
+      margin:10px 0;
+      font-weight:bold;
+      font-size:17px;
+    }
+
+    .whatsapp{
+      background:#25D366;
+    }
+
+    .telegram{
+      background:#229ED9;
+    }
+
+    .footer{
+      text-align:center;
+      color:#555;
+      font-size:14px;
+      padding:20px 0;
+    }
+
+    @media(max-width:600px){
+      .wrapper{
+        padding:12px;
+      }
+
+      .hero{
+        padding:24px 16px;
+        border-radius:18px;
+      }
+
+      .hero h1{
+        font-size:24px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .telegram-promo,
+      .card,
+      .contact-box{
+        padding:16px;
+        border-radius:17px;
+      }
+
+      .question{
+        padding:15px;
+      }
+
+      .question b{
+        font-size:15px;
+      }
+
+      label{
+        font-size:15px;
+        padding:11px;
+      }
+
+      button{
+        font-size:16px;
+        padding:15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <div class="hero">
+    <h1>М019 — Профильный английский</h1>
+    <p>Шет тілі педагогтарын даярлау бағыты бойынша тест</p>
+    <p>Professional English бөлімі</p>
+    <span class="badge">9 сұрақ • Бірнеше дұрыс жауап болуы мүмкін</span>
+  </div>
+
+  <div class="telegram-promo">
+    <h2>ҚОСЫМША ТЕГІН ТЕСТТЕР TELEGRAM-КАНАЛДА</h2>
+    <p>М019, ағылшын тілі, педагогика және магистратураға дайындық бойынша қосымша материалдар жарияланады.</p>
+    <p>Дополнительные бесплатные тесты и материалы публикуются в Telegram-канале.</p>
+
+    <a class="promo-btn" href="https://t.me/+8SolEPgN4Is0MTMy" target="_blank">
+      Telegram-каналға кіру
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Нұсқаулық</h2>
+    <p>Бұл тестте кейбір сұрақтарда бірнеше дұрыс жауап бар. Сондықтан жауаптарды белгілеу үшін checkbox қолданылады.</p>
+    <p>Барлық дұрыс жауаптарды таңдаңыз. Егер бір дұрыс жауапты ғана белгілесеңіз немесе артық жауап таңдасаңыз, сұрақ қате болып есептеледі.</p>
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <h2>Part 1. Professional English</h2>
+      <p>Дұрыс жауаптарды таңдаңыз.</p>
+    </div>
+
+    <div id="quiz"></div>
+
+    <button onclick="checkAnswers()">Нәтижені көру / Показать результат</button>
+  </div>
+
+  <div id="results"></div>
+
+  <div class="footer">
+    © М019 — Профильный английский
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    q:"1. Find two different groups. Mobile students are usually divided into:",
+    options:[
+      "A) A level - students",
+      "B) Programme students",
+      "C) Higher employers",
+      "D) Free-movers",
+      "E) High-flier students",
+      "F) Whizz kids",
+      "G) Study-seekers",
+      "H) Job-offers"
+    ],
+    answer:[1,3],
+    explanation:"Дұрыс жауаптар — B және D. Mobile students екі топқа бөлінеді: Programme students және Free-movers.",
+    source:"Учебникте осы ой былай беріледі: mobile students are divided into Free-movers and programme students."
+  },
+  {
+    q:"2. Every child is unique and there are no two ___________ similar people.",
+    options:[
+      "A) differently",
+      "B) partly",
+      "C) total",
+      "D) generally",
+      "E) absolutely",
+      "F) widely",
+      "G) various",
+      "H) completely"
+    ],
+    answer:[4,7],
+    explanation:"Дұрыс жауаптар — E және H. Негізгі мәтінде completely similar people деп берілген. Бірақ absolutely сөзі де мағына жағынан сәйкес келеді.",
+    source:"Учебникте нақты сөйлем: Every child is unique and there are no two completely similar people."
+  },
+  {
+    q:"3. Academic mobility refers to students and teachers in higher education moving to another institution inside or outside their own country to study or teach for a _____.",
+    options:[
+      "A) restricted time",
+      "B) permanently",
+      "C) lasting time",
+      "D) eternal time",
+      "E) safer time",
+      "F) boundless time",
+      "G) limited time",
+      "H) enduringly"
+    ],
+    answer:[0,6],
+    explanation:"Дұрыс жауаптар — A және G. Учебникте limited time деп жазылған. Restricted time мағынасы жағынан limited time-ға жақын.",
+    source:"Учебник бойынша academic mobility — students and teachers moving to another institution to study or teach for a limited time."
+  },
+  {
+    q:"4. Latins _____________ reserved, cold and factual Nordic communication, with limited eye-contact.",
+    options:[
+      "A) may have doubts about",
+      "B) are ready to trust",
+      "C) believe with no doubt",
+      "D) can quickly believe",
+      "E) quickly rely on",
+      "F) cannot trust",
+      "G) can place little faith in",
+      "H) trustworthy"
+    ],
+    answer:[5,6],
+    explanation:"Дұрыс жауаптар — F және G. Негізгі мәтінде can place little faith in деп берілген. Cannot trust осы мағынаға жақын.",
+    source:"Учебник моменті: Latins can place little faith in reserved, cold and factual Nordic communication, with limited eye-contact."
+  },
+  {
+    q:"5. The examples of the scope of Intercultural Communication and the main contributions of the various fields are: verbal communication (________, ________) and non-verbal communication.",
+    options:[
+      "A) linguistics",
+      "B) geography",
+      "C) philosophy",
+      "D) differences",
+      "E) entrepreneurship",
+      "F) privacy",
+      "G) tourism",
+      "H) communication"
+    ],
+    answer:[0,7],
+    explanation:"Дұрыс жауаптар — A және H. Verbal communication саласына linguistics және communication жатады.",
+    source:"Учебникте verbal communication бөлігінде linguistics және communication көрсетілген."
+  },
+  {
+    q:"6. “Online learning can be a lifeline to those who have _________, such as geographical distances or physical disabilities.” – Paul Levinson, author",
+    options:[
+      "A) jobseekers",
+      "B) problems",
+      "C) differences",
+      "D) barriers",
+      "E) employments",
+      "F) educations",
+      "G) obstacles",
+      "H) diplomas"
+    ],
+    answer:[3,6],
+    explanation:"Дұрыс жауаптар — D және G. Учебникте obstacles деп берілген. Barriers сөзі де obstacles сөзіне мағына жағынан жақын.",
+    source:"Учебник моменті: Online learning can be a lifeline to those who have obstacles, such as geographical distances or physical disabilities."
+  },
+  {
+    q:"7. Globally competent students see themselves as __________.",
+    options:[
+      "A) active players",
+      "B) active bystanders",
+      "C) passive members",
+      "D) bystander",
+      "E) passers by",
+      "F) onlookers",
+      "G) ones capable of making a difference",
+      "H) strangers"
+    ],
+    answer:[0,6],
+    explanation:"Дұрыс жауаптар — A және G. Globally competent students өздерін жай бақылаушы емес, өзгеріс жасай алатын active players ретінде көреді.",
+    source:"Учебникте globally competent students see themselves as players, not bystanders, and as capable of making a difference деген ой берілген."
+  },
+  {
+    q:"8. Globally competent students can articulate the significance of their questions and _____________ from variety of local, national and international sources, including those in multiple languages.",
+    options:[
+      "A) identify credible information",
+      "B) care about their own needs",
+      "C) know individual workload",
+      "D) know their own needs",
+      "E) read information only for themselves",
+      "F) collect credible information",
+      "G) work on their own",
+      "H) analyze credible information"
+    ],
+    answer:[0,5,7],
+    explanation:"Дұрыс жауаптар — A, F және H. Мәтінде credible information-ды identify, collect және analyze ету туралы айтылады.",
+    source:"Учебник моменті: identifying, collecting, and analyzing credible information from a variety of local, national and international sources."
+  },
+  {
+    q:"9. The more violent television the subjects watched at age eight, ________ was their aggressive behavior even 22 years later.",
+    options:[
+      "A) the lesser serious",
+      "B) the more big",
+      "C) bigger",
+      "D) lesser serious",
+      "E) the more serious",
+      "F) the better",
+      "G) more bad",
+      "H) the more severe"
+    ],
+    answer:[4,7],
+    explanation:"Дұрыс жауаптар — E және H. Учебникте the more serious деп берілген. The more severe те мағына жағынан сәйкес келеді.",
+    source:"Учебник моменті: The more violent television the subjects watched at age eight, the more serious was their aggressive behavior even 22 years later."
+  }
+];
+
+const quiz = document.getElementById("quiz");
+
+questions.forEach((item, index) => {
+  let html = `<div class="question">
+    <b>${item.q}</b>`;
+
+  item.options.forEach((option, optionIndex) => {
+    html += `
+      <label>
+        <input type="checkbox" name="q${index}" value="${optionIndex}">
+        ${option}
+      </label>
+    `;
+  });
+
+  html += `</div>`;
+  quiz.innerHTML += html;
+});
+
+function arraysEqual(a, b){
+  if(a.length !== b.length) return false;
+
+  const sortedA = [...a].sort((x,y) => x-y);
+  const sortedB = [...b].sort((x,y) => x-y);
+
+  for(let i = 0; i < sortedA.length; i++){
+    if(sortedA[i] !== sortedB[i]) return false;
+  }
+
+  return true;
+}
+
+function getSelectedAnswers(index){
+  const checked = document.querySelectorAll(`input[name="q${index}"]:checked`);
+  return Array.from(checked).map(input => Number(input.value));
+}
+
+function formatAnswers(indexes, options){
+  if(indexes.length === 0){
+    return "Жауап берілмеді";
+  }
+
+  return indexes.map(i => options[i]).join("<br>");
+}
+
+function checkAnswers(){
+  let score = 0;
+  let resultHTML = "";
+
+  questions.forEach((item, index) => {
+    const userAnswers = getSelectedAnswers(index);
+    const isCorrect = arraysEqual(userAnswers, item.answer);
+
+    if(isCorrect){
+      score++;
+      resultHTML += `<p class="correct">✔ ${item.q}</p>`;
+    } else {
+      resultHTML += `<p class="wrong">✘ ${item.q}</p>`;
+    }
+
+    resultHTML += `
+      <div class="explanation">
+        <b>Дұрыс жауап:</b><br>
+        ${formatAnswers(item.answer, item.options)}<br><br>
+
+        <b>Сіздің жауабыңыз:</b><br>
+        ${formatAnswers(userAnswers, item.options)}<br><br>
+
+        <b>Түсіндірме:</b> ${item.explanation}
+
+        <div class="source-moment">
+          <b>Учебник.pdf моменті:</b><br>
+          ${item.source}
+        </div>
+      </div>
+    `;
+  });
+
+  let level = "";
+  let messageKaz = "";
+  let messageRus = "";
+
+  if(score <= 3){
+    level = "Бастапқы деңгей / Начальный уровень";
+    messageKaz = "Сізге әлі көбірек дайындық керек.";
+    messageRus = "Вам нужно ещё больше подготовиться.";
+  } else if(score <= 6){
+    level = "Орташа деңгей / Средний уровень";
+    messageKaz = "Негізгі түсінік бар, бірақ қосымша қайталау қажет.";
+    messageRus = "Базовое понимание есть, но нужна дополнительная практика.";
+  } else {
+    level = "Жақсы дайындық / Хорошая готовность";
+    messageKaz = "Нәтижеңіз жақсы. Осы бағытта жалғастырыңыз.";
+    messageRus = "Результат хороший. Продолжайте подготовку.";
+  }
+
+  const finalBlock = `
+    <div class="result-box">
+      <h2>Нәтижеңіз: ${score}/${questions.length}</h2>
+      <h2>${level}</h2>
+      <p>${messageKaz}</p>
+      <p>${messageRus}</p>
+    </div>
+
+    <div class="contact-box">
+      <h2>Толық дайындық керек пе?</h2>
+      <p>М019 профильный английский және педагогика бойынша толық тесттер туралы білу үшін жазыңыз.</p>
+      <p>Для полного доступа к тестам по М019 напишите в WhatsApp или Telegram.</p>
+
+      <a class="contact-btn whatsapp" href="https://wa.me/77007976745?text=Сәлеметсіз%20бе!%20М019%20профильный%20ағылшын%20және%20педагогика%20бойынша%20толық%20тест%20туралы%20білгім%20келеді.%0AЗдравствуйте!%20Хочу%20узнать%20про%20полный%20тест%20М019%20по%20профильному%20английскому%20и%20педагогике." target="_blank">
+        WhatsApp-қа жазу
+      </a>
+
+      <a class="contact-btn telegram" href="https://t.me/elnazm_ln" target="_blank">
+        Telegram-ға жазу
+      </a>
+    </div>
+  `;
+
+  document.getElementById("results").innerHTML = finalBlock + resultHTML;
+
+  document.getElementById("results").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+</script>
+
+</body>
+</html>
