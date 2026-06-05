@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>М019 — Professional English</title>
+  <title>М019 — Professional English және Педагогика</title>
 
   <style>
     *{
@@ -58,6 +58,25 @@
       font-weight:bold;
       margin-top:12px;
       font-size:14px;
+    }
+
+    .nav-buttons{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .nav-buttons a{
+      text-align:center;
+      text-decoration:none;
+      background:white;
+      color:#1565c0;
+      padding:14px;
+      border-radius:14px;
+      font-weight:bold;
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+      border:1px solid #dbeafe;
     }
 
     .telegram-promo{
@@ -146,7 +165,8 @@
       background:#e8f5e9;
     }
 
-    input[type="checkbox"]{
+    input[type="checkbox"],
+    input[type="radio"]{
       margin-right:8px;
       transform:scale(1.1);
     }
@@ -181,7 +201,7 @@
     .explanation{
       background:#f1f8e9;
       padding:12px;
-      margin:10px 0 18px;
+      margin:10px 0 0;
       border-radius:12px;
       line-height:1.5;
       border-left:4px solid #43a047;
@@ -208,6 +228,20 @@
     .result-box h2{
       margin-top:0;
       color:#2e7d32;
+    }
+
+    .score-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:15px;
+    }
+
+    .score-item{
+      background:white;
+      padding:12px;
+      border-radius:14px;
+      font-weight:bold;
     }
 
     .contact-box{
@@ -269,6 +303,10 @@
         font-size:15px;
       }
 
+      .nav-buttons{
+        grid-template-columns:1fr;
+      }
+
       .telegram-promo,
       .card,
       .contact-box{
@@ -297,6 +335,10 @@
         font-size:16px;
         padding:15px;
       }
+
+      .score-grid{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
@@ -306,15 +348,20 @@
 <div class="wrapper">
 
   <div class="hero">
-    <h1>М019 — Professional English</h1>
-    <p>Кәсіби бағытталған шет тілі бойынша тест</p>
-    <p>Ағылшын тілі мұғалімдерін даярлау бағыты</p>
-    <span class="badge">20 сұрақ • Бір немесе бірнеше дұрыс жауап болуы мүмкін</span>
+    <h1>М019 — Professional English және Педагогика</h1>
+    <p>Ағылшын тілі мұғалімдерін даярлау бағыты бойынша тест</p>
+    <p>Professional English + Педагогика</p>
+    <span class="badge">50 сұрақ • Нәтиже бірден шығады</span>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="#englishSection">Professional English</a>
+    <a href="#pedagogySection">Педагогика</a>
   </div>
 
   <div class="telegram-promo">
     <h2>ҚОСЫМША ТЕГІН ТЕСТТЕР TELEGRAM-КАНАЛДА</h2>
-    <p>М019, ағылшын тілі, педагогика және магистратураға дайындық бойынша материалдар жарияланады.</p>
+    <p>ТГО, Ағылшын тілі, педагогика бойынша дәл осындай сайттар бар қосымша материалдар да жүктеледі</p>
     <p>Дополнительные тесты и материалы публикуются в Telegram-канале.</p>
 
     <a class="promo-btn" href="https://t.me/+8SolEPgN4Is0MTMy" target="_blank">
@@ -324,357 +371,415 @@
 
   <div class="card">
     <h2>Нұсқаулық</h2>
-    <p>Бұл тестте кейбір сұрақтарда бірнеше дұрыс жауап бар.</p>
-    <p>Барлық дұрыс жауаптарды таңдаңыз. Егер бір дұрыс жауапты белгілемесеңіз немесе артық жауап таңдасаңыз, сұрақ қате болып есептеледі.</p>
+    <p>Бұл тест 2 бөлімнен тұрады:</p>
+    <ul>
+      <li><b>Professional English:</b> 20 сұрақ</li>
+      <li><b>Педагогика:</b> 30 сұрақ</li>
+    </ul>
+    <p>Professional English бөлімінде кейбір сұрақтарда бірнеше дұрыс жауап болуы мүмкін. Педагогика бөлімінде бір дұрыс жауап бар.</p>
+    <p>Нәтижені көру батырмасын басқанда, түсіндірме әр сұрақтың астында шығады.</p>
   </div>
 
-  <div class="card">
+  <section id="englishSection" class="card">
     <div class="section-title">
       <h2>Part 1. Professional English</h2>
       <p>Дұрыс жауаптарды таңдаңыз.</p>
     </div>
+    <div id="englishQuiz"></div>
+  </section>
 
-    <div id="quiz"></div>
+  <section id="pedagogySection" class="card">
+    <div class="section-title">
+      <h2>Part 2. Педагогика</h2>
+      <p>Дұрыс жауапты таңдаңыз.</p>
+    </div>
+    <div id="pedagogyQuiz"></div>
+  </section>
 
+  <div class="card">
     <button onclick="checkAnswers()">Нәтижені көру / Show Results</button>
   </div>
 
-  <div id="explanations"></div>
   <div id="results"></div>
 
   <div class="footer">
-    © М019 — Professional English
+    © М019 — Professional English және Педагогика
   </div>
 
 </div>
 
 <script>
-const questions = [
+const englishQuestions = [
   {
     q:"1. Find two different groups. Mobile students are usually divided into:",
-    options:[
-      "A) A level - students",
-      "B) Programme students",
-      "C) Higher employers",
-      "D) Free-movers",
-      "E) High-flier students",
-      "F) Whizz kids",
-      "G) Study-seekers",
-      "H) Job-offers"
-    ],
+    options:["A) A level - students","B) Programme students","C) Higher employers","D) Free-movers","E) High-flier students","F) Whizz kids","G) Study-seekers","H) Job-offers"],
     answer:[1,3],
     explanation:"Mobile students екі топқа бөлінеді: Programme students және Free-movers.",
     source:"Учебник моменті: mobile students are divided into Free-movers and programme students."
   },
   {
     q:"2. Every child is unique and there are no two ___________ similar people.",
-    options:[
-      "A) differently",
-      "B) partly",
-      "C) total",
-      "D) generally",
-      "E) absolutely",
-      "F) widely",
-      "G) various",
-      "H) completely"
-    ],
+    options:["A) differently","B) partly","C) total","D) generally","E) absolutely","F) widely","G) various","H) completely"],
     answer:[4,7],
     explanation:"Completely similar people — толықтай ұқсас адамдар. Absolutely сөзі де мағына жағынан сәйкес келеді.",
     source:"Учебник моменті: Every child is unique and there are no two completely similar people."
   },
   {
     q:"3. Academic mobility refers to students and teachers in higher education moving to another institution inside or outside their own country to study or teach for a _____.",
-    options:[
-      "A) restricted time",
-      "B) permanently",
-      "C) lasting time",
-      "D) eternal time",
-      "E) safer time",
-      "F) boundless time",
-      "G) limited time",
-      "H) enduringly"
-    ],
+    options:["A) restricted time","B) permanently","C) lasting time","D) eternal time","E) safer time","F) boundless time","G) limited time","H) enduringly"],
     answer:[0,6],
     explanation:"Academic mobility уақытша болады, сондықтан limited time және restricted time дұрыс.",
     source:"Учебник моменті: academic mobility means moving to another institution to study or teach for a limited time."
   },
   {
     q:"4. Latins _____________ reserved, cold and factual Nordic communication, with limited eye-contact.",
-    options:[
-      "A) may have doubts about",
-      "B) are ready to trust",
-      "C) believe with no doubt",
-      "D) can quickly believe",
-      "E) quickly rely on",
-      "F) cannot trust",
-      "G) can place little faith in",
-      "H) trustworthy"
-    ],
+    options:["A) may have doubts about","B) are ready to trust","C) believe with no doubt","D) can quickly believe","E) quickly rely on","F) cannot trust","G) can place little faith in","H) trustworthy"],
     answer:[5,6],
     explanation:"Can place little faith in — сенім аз болу. Cannot trust осы мағынаға жақын.",
     source:"Учебник моменті: Latins can place little faith in reserved, cold and factual Nordic communication, with limited eye-contact."
   },
   {
     q:"5. The examples of the scope of Intercultural Communication and the main contributions of the various fields are: verbal communication (________, ________) and non-verbal communication.",
-    options:[
-      "A) linguistics",
-      "B) geography",
-      "C) philosophy",
-      "D) differences",
-      "E) entrepreneurship",
-      "F) privacy",
-      "G) tourism",
-      "H) communication"
-    ],
+    options:["A) linguistics","B) geography","C) philosophy","D) differences","E) entrepreneurship","F) privacy","G) tourism","H) communication"],
     answer:[0,7],
     explanation:"Verbal communication саласына linguistics және communication жатады.",
     source:"Учебник моменті: verbal communication — linguistics, communication."
   },
   {
     q:"6. “Online learning can be a lifeline to those who have _________, such as geographical distances or physical disabilities.” – Paul Levinson, author",
-    options:[
-      "A) jobseekers",
-      "B) problems",
-      "C) differences",
-      "D) barriers",
-      "E) employments",
-      "F) educations",
-      "G) obstacles",
-      "H) diplomas"
-    ],
+    options:["A) jobseekers","B) problems","C) differences","D) barriers","E) employments","F) educations","G) obstacles","H) diplomas"],
     answer:[3,6],
     explanation:"Obstacles және barriers — кедергілер деген мағына береді.",
     source:"Учебник моменті: Online learning can be a lifeline to those who have obstacles, such as geographical distances or physical disabilities."
   },
   {
     q:"7. Globally competent students see themselves as __________.",
-    options:[
-      "A) active players",
-      "B) active bystanders",
-      "C) passive members",
-      "D) bystander",
-      "E) passers by",
-      "F) onlookers",
-      "G) ones capable of making a difference",
-      "H) strangers"
-    ],
+    options:["A) active players","B) active bystanders","C) passive members","D) bystander","E) passers by","F) onlookers","G) ones capable of making a difference","H) strangers"],
     answer:[0,6],
     explanation:"Globally competent students өздерін жай бақылаушы емес, өзгеріс жасай алатын active players ретінде көреді.",
     source:"Учебник моменті: globally competent students see themselves as players, not bystanders, and as capable of making a difference."
   },
   {
     q:"8. Globally competent students can articulate the significance of their questions and _____________ from variety of local, national and international sources, including those in multiple languages.",
-    options:[
-      "A) identify credible information",
-      "B) care about their own needs",
-      "C) know individual workload",
-      "D) know their own needs",
-      "E) read information only for themselves",
-      "F) collect credible information",
-      "G) work on their own",
-      "H) analyze credible information"
-    ],
+    options:["A) identify credible information","B) care about their own needs","C) know individual workload","D) know their own needs","E) read information only for themselves","F) collect credible information","G) work on their own","H) analyze credible information"],
     answer:[0,5,7],
     explanation:"Credible information-ды identify, collect және analyze ету керек.",
     source:"Учебник моменті: identifying, collecting, and analyzing credible information from a variety of local, national and international sources."
   },
   {
     q:"9. The more violent television the subjects watched at age eight, ________ was their aggressive behavior even 22 years later.",
-    options:[
-      "A) the lesser serious",
-      "B) the more big",
-      "C) bigger",
-      "D) lesser serious",
-      "E) the more serious",
-      "F) the better",
-      "G) more bad",
-      "H) the more severe"
-    ],
+    options:["A) the lesser serious","B) the more big","C) bigger","D) lesser serious","E) the more serious","F) the better","G) more bad","H) the more severe"],
     answer:[4,7],
     explanation:"The more serious — грамматикалық дұрыс comparative structure. The more severe де мағына жағынан сәйкес.",
     source:"Учебник моменті: The more violent television the subjects watched at age eight, the more serious was their aggressive behavior even 22 years later."
   },
   {
     q:"10. The United Kingdom of Great Britain and Northern Ireland is ...",
-    options:[
-      "A) totalitarian",
-      "B) democratic",
-      "C) parliamentary",
-      "D) presidential",
-      "E) authoritarian"
-    ],
+    options:["A) totalitarian","B) democratic","C) parliamentary","D) presidential","E) authoritarian"],
     answer:[2],
     explanation:"The UK — parliamentary country, яғни парламенттік басқару жүйесі бар мемлекет.",
     source:"Жалпы анықтама бойынша: The United Kingdom is a parliamentary state."
   },
   {
     q:"11. All over the world child labor is major ...",
-    options:[
-      "A) concern",
-      "B) alarm",
-      "C) difficulty",
-      "D) worry",
-      "E) focus",
-      "F) uncertainty",
-      "G) inquiry"
-    ],
+    options:["A) concern","B) alarm","C) difficulty","D) worry","E) focus","F) uncertainty","G) inquiry"],
     answer:[0,3],
     explanation:"Major concern — тұрақты тіркес. Worry де concern сөзіне мағына жағынан жақын.",
     source:"Учебник моменті: Child labour is a major concern all over the world."
   },
   {
     q:"12. Many parents give children a weekly or monthly ______ regardless of their behavior because they believe it teaches children to be financially responsible.",
-    options:[
-      "A) wellness",
-      "B) beneficial",
-      "C) child labour",
-      "D) child launder",
-      "E) latchkey child",
-      "F) child money",
-      "G) pocket money",
-      "H) allowance"
-    ],
+    options:["A) wellness","B) beneficial","C) child labour","D) child launder","E) latchkey child","F) child money","G) pocket money","H) allowance"],
     answer:[6,7],
     explanation:"Allowance — балаларға апта сайын немесе ай сайын берілетін ақша. Pocket money де осы мағынаға жақын.",
     source:"Учебник моменті: Many parents give children a weekly or monthly allowance."
   },
   {
     q:"13. What the teachers could not notice about Einstein at school was his ...",
-    options:[
-      "A) radiance",
-      "B) brilliancy",
-      "C) perception",
-      "D) braininess",
-      "E) brains",
-      "F) brilliance"
-    ],
+    options:["A) radiance","B) brilliancy","C) perception","D) braininess","E) brains","F) brilliance"],
     answer:[1,3,5],
     explanation:"Brilliancy, braininess, brilliance — ақылдылық, дарындылық, ерекше қабілет мағынасына жақын.",
     source:"Мағынасы бойынша түсіндірме: question asks about Einstein's intellectual ability."
   },
   {
     q:"14. A large company mainly owned by one person or family is a ...",
-    options:[
-      "A) magnates",
-      "B) giant company",
-      "C) industry",
-      "D) business clan",
-      "E) union",
-      "F) business empire"
-    ],
+    options:["A) magnates","B) giant company","C) industry","D) business clan","E) union","F) business empire"],
     answer:[5],
     explanation:"Business empire — бір адамға немесе бір отбасыға тиесілі үлкен бизнес жүйесі.",
     source:"Мағынасы бойынша түсіндірме: business empire means a large group of companies controlled by one person or family."
   },
   {
     q:"15. Some benefits of internships for students",
-    options:[
-      "A) the list of potential job offers will be reduced",
-      "B) covers up students all living expenses when they are studying",
-      "C) possibility of handling all your personal costs",
-      "D) ensures workplace creativity and adaptability",
-      "E) increases the possibility of finding work at reputable companies",
-      "F) makes it harder to go from being a student to starting a job"
-    ],
+    options:["A) the list of potential job offers will be reduced","B) covers up students all living expenses when they are studying","C) possibility of handling all your personal costs","D) ensures workplace creativity and adaptability","E) increases the possibility of finding work at reputable companies","F) makes it harder to go from being a student to starting a job"],
     answer:[3,4],
     explanation:"Internship студентке тәжірибе береді, жұмысқа орналасу мүмкіндігін арттырады және workplace adaptability дамытады.",
     source:"Учебник моменті: internship helps prepare aspiring teachers for their future and gives classroom teaching experience with mentors."
   },
   {
     q:"16. The pandemic has grown the importance of e-learning ...",
-    options:[
-      "A) globally",
-      "B) totally",
-      "C) categorically",
-      "D) locally",
-      "E) in a certain country only",
-      "F) internationally"
-    ],
+    options:["A) globally","B) totally","C) categorically","D) locally","E) in a certain country only","F) internationally"],
     answer:[0,5],
     explanation:"Globally және internationally — әлемдік деңгейде деген мағына береді.",
     source:"Учебник моменті: e-learning has a global reach and can be accessed by people around the world."
   },
   {
     q:"17. Pre-service English teachers are expected to be knowledgeable of ...",
-    options:[
-      "A) English language and literature",
-      "B) History of international relations",
-      "C) Tourism industry",
-      "D) Infrastructure and logistics",
-      "E) Drawing and painting",
-      "F) Methodology of foreign language teaching",
-      "G) Public relations"
-    ],
+    options:["A) English language and literature","B) History of international relations","C) Tourism industry","D) Infrastructure and logistics","E) Drawing and painting","F) Methodology of foreign language teaching","G) Public relations"],
     answer:[0,5],
     explanation:"Болашақ ағылшын тілі мұғалімдері English language and literature және foreign language teaching methodology білуі керек.",
     source:"Мағынасы бойынша түсіндірме: these are core areas for pre-service English teachers."
   },
   {
     q:"18. Some students need to have a quiet space to themselves and if there are too many distractions they can’t ...",
-    options:[
-      "A) collect",
-      "B) confuse",
-      "C) assume",
-      "D) concentrate",
-      "E) agree",
-      "F) believe",
-      "G) study"
-    ],
+    options:["A) collect","B) confuse","C) assume","D) concentrate","E) agree","F) believe","G) study"],
     answer:[3,6],
     explanation:"Distractions көп болса, students can’t concentrate және can’t study.",
     source:"Мағынасы бойынша түсіндірме: distractions prevent concentration and studying."
   },
   {
     q:"19. Culture and its heritage reflect and shape ...",
-    options:[
-      "A) values",
-      "B) ideals",
-      "C) significances",
-      "D) principles",
-      "E) assessments",
-      "F) aspirations",
-      "G) beliefs"
-    ],
+    options:["A) values","B) ideals","C) significances","D) principles","E) assessments","F) aspirations","G) beliefs"],
     answer:[0,1,3,5,6],
     explanation:"Culture and heritage адамның values, ideals, principles, aspirations және beliefs жүйесін көрсетеді әрі қалыптастырады.",
     source:"Мағынасы бойынша түсіндірме: culture reflects and shapes shared values, ideals, principles, aspirations, and beliefs."
   },
   {
     q:"20. Due to the globalization in education, working in teams requires students to develop such skills as ...",
-    options:[
-      "A) work in-group dynamics",
-      "B) simplification of other cultures and issues",
-      "C) leadership and management skills",
-      "D) solve math tasks",
-      "E) compromise with team members",
-      "F) scientific and technological skills"
-    ],
+    options:["A) work in-group dynamics","B) simplification of other cultures and issues","C) leadership and management skills","D) solve math tasks","E) compromise with team members","F) scientific and technological skills"],
     answer:[0,2,4],
     explanation:"Teamwork үшін group dynamics, leadership/management skills және compromise with team members керек.",
     source:"Учебник моменті: globally competent students participate in diverse groups and work effectively toward a common goal."
   }
 ];
 
-const quiz = document.getElementById("quiz");
+const pedagogyQuestions = [
+  {
+    q:"1. Оқушының өзекті даму деңгейі Л. Выготский бойынша нені білдіреді?",
+    options:["A) Тәжірибелі адамның көмегіне сүйенуі","B) Оқушының өз бетімен орындай алатын тапсырмалары","C) Тек мұғалімнің бақылауымен оқу","D) Болашақта меңгеретін дағдылары","E) Топтық жұмыстағы белсенділігі"],
+    answer:1,
+    explanation:"Өзекті даму деңгейі — оқушының көмексіз, өз бетімен орындай алатын тапсырмалар деңгейі."
+  },
+  {
+    q:"2. Дарынды және талантты балаларды анықтау өлшемдерінің «өз білімін жетілдіру» өлшеміне сәйкес келетін сипаттама:",
+    options:["A) Олар тапсырманы баяу орындайды","B) Олар тек мұғалімнің көмегіне сүйенеді","C) Олар өздерінің оқуларын реттей алады","D) Олар тек дайын ақпаратты жаттайды","E) Олар топта жұмыс істей алмайды"],
+    answer:2,
+    explanation:"Өз білімін жетілдіру өлшемі оқушының өз оқуын реттей алуымен байланысты."
+  },
+  {
+    q:"3. «Оқушылар ақпаратты біліп қана қоймай, қажет кезінде пайдалана алады» деп анықталған өлшем:",
+    options:["A) Есте сақтау","B) Мәселені шешу","C) Қарым-қатынас","D) Шығармашылық","E) Жылдам оқу"],
+    answer:1,
+    explanation:"Ақпаратты қажетті кезде қолдану — мәселені шешу қабілетінің белгісі."
+  },
+  {
+    q:"4. Баланың өзін-өзі ынталандырып, табысқа ұмтылуы:",
+    options:["A) Сыртқы уәж","B) Бағалау","C) Ішкі уәж","D) Қадағалау","E) Бақылау"],
+    answer:2,
+    explanation:"Ішкі уәж — адамның өз ішкі қызығушылығы мен талпынысы арқылы әрекет етуі."
+  },
+  {
+    q:"5. Оқушылар мен мұғалімдерге білім, түсіну және дағды туралы хабар беруді көздейтін бағалау мақсаты:",
+    options:["A) Оқудағы қиындықтарды анықтау","B) Тек қорытынды баға қою","C) Оқушыны жазалау","D) Сыныпты салыстыру","E) Мұғалімді бақылау"],
+    answer:0,
+    explanation:"Бағалау оқудағы қиындықтарды анықтап, оқу үдерісін жақсартуға көмектеседі."
+  },
+  {
+    q:"6. Оқу пирамидасына сәйкес оқушылардың алған ақпаратты есте сақтауының ең тиімсізі:",
+    options:["A) Тәжірибе жасау","B) Өзгелерді оқыту","C) Топтық талқылау","D) Дәріс тыңдау","E) Практикалық жұмыс"],
+    answer:3,
+    explanation:"Оқу пирамидасында дәріс тыңдау ақпаратты есте сақтаудың ең төмен деңгейлерінің бірі ретінде беріледі."
+  },
+  {
+    q:"7. Бағалау мақсатында жүргізілген қадағалау нәтижелерінің интерпретациясы:",
+    options:["A) Оқушыны жазалау","B) Алынған мәліметтердің мәнін анықтау","C) Сабақты аяқтау","D) Бағаны жасыру","E) Тек бақылау жүргізу"],
+    answer:1,
+    explanation:"Интерпретация — алынған мәліметтердің мағынасын анықтау."
+  },
+  {
+    q:"8. Зерттеушілік әңгіменің сипаттамасы:",
+    options:["A) Оқушылар бір-бірін тыңдамайды","B) Оқушылар тек мұғалімнің пікірін қайталайды","C) Оқушылар өз пікірлеріне дәйекті дәлелдер ұсынады","D) Оқушылар жауап беруден қашады","E) Оқушылар тек қысқа жауап береді"],
+    answer:2,
+    explanation:"Зерттеушілік әңгімеде оқушылар өз пікірін дәлелмен негіздейді."
+  },
+  {
+    q:"9. Өздерінің оқуын реттей алатын ең үздік оқушыны анықтайтын сенімді өлшем:",
+    options:["A) Есте сақтау қабілеті","B) Жылдам жазуы","C) Өз білімін жетілдіру","D) Мұғалімді тыңдауы","E) Тәртіп сақтауы"],
+    answer:2,
+    explanation:"Өз білімін жетілдіру — оқушының оқу үдерісін өзі бақылап, реттей алуын көрсетеді."
+  },
+  {
+    q:"10. Тәсілдер, құндылықтар, дағдылар және кешенді біліммен қаруланған оқушы:",
+    options:["A) Тәуелді оқушы","B) Тәуелсіз оқушы","C) Әлсіз оқушы","D) Бақылаушы оқушы","E) Пассивті оқушы"],
+    answer:1,
+    explanation:"Тәуелсіз оқушы алған білімін қажет жағдайда өз бетінше пайдалана алады."
+  },
+  {
+    q:"11. Сынақтан өткізу сұрағы:",
+    options:["A) Бұл дұрыс па?","B) Сен келісесің бе?","C) Осы айтқандарыңызға дәлел келтіре аласыз ба?","D) Жауапты білесің бе?","E) Қай бетте жазылған?"],
+    answer:2,
+    explanation:"Сынақтан өткізу сұрағы оқушыдан дәлел мен негіздеме талап етеді."
+  },
+  {
+    q:"12. «Таңба арқылы елестету қабілетіне қатысты» жады түрі:",
+    options:["A) Қысқа мерзімді","B) Эпизодтық","C) Семантикалық","D) Процедуралық","E) Механикалық"],
+    answer:2,
+    explanation:"Семантикалық жады мағына, ұғым, таңба арқылы елестетуге байланысты."
+  },
+  {
+    q:"13. Мұғалімнің барлық оқушыға қолайлы жағдай қалыптастыруы:",
+    options:["A) Сабақты аяқтау","B) Оқу ортасын құру","C) Бағаны төмендету","D) Тәртіп жазалау","E) Үй тапсырмасын көбейту"],
+    answer:1,
+    explanation:"Оқу ортасын құру — оқушылардың білім, дағды және ептіліктерін дамытуға жағдай жасау."
+  },
+  {
+    q:"14. Диалог бәсекелестікке құрылып, пікірлерде үлкен алшақтық болатын әңгіме түрі:",
+    options:["A) Зерттеушілік әңгіме","B) Топтық әңгіме","C) Әңгіме-дебат","D) Кумулятивтік әңгіме","E) Жеке әңгіме"],
+    answer:2,
+    explanation:"Әңгіме-дебатта пікірлер арасында келіспеушілік пен бәсекелестік басым болады."
+  },
+  {
+    q:"15. Бағалау мақсатында жүргізілген қадағалау нәтижелерінің интерпретациясы:",
+    options:["A) Алынған мәліметтердің мәнін анықтау","B) Тек журнал толтыру","C) Сабақ жоспарын көшіру","D) Оқушыны салыстыру","E) Мектепті тексеру"],
+    answer:0,
+    explanation:"Интерпретация — бақылаудан алынған ақпараттың мәнін түсіндіру."
+  },
+  {
+    q:"16. Адамгершілік бағыттылық:",
+    options:["A) Тек пәндік білімді білдіреді","B) Педагог қызметінің мағынасын, позициясын білдіреді","C) Тек тәртіп ережесін көрсетеді","D) Оқушының бағасын анықтайды","E) Сыныптағы орын тәртібін білдіреді"],
+    answer:1,
+    explanation:"Адамгершілік бағыттылық педагогтың кәсіби позициясы мен қызметінің мағынасын көрсетеді."
+  },
+  {
+    q:"17. Педагогикалық іс-әрекеттің оқушыға психологиялық әсер етуші қызметі:",
+    options:["A) Ақпараттық","B) Ұйымдастырушылық","C) Дамытушылық","D) Бақылаушылық","E) Техникалық"],
+    answer:2,
+    explanation:"Дамытушылық қызмет оқушының тұлғалық және психологиялық дамуына әсер етеді."
+  },
+  {
+    q:"18. Өткен тәжірибеден алған іздерді жадыда қалдырып, қайта жаңғыртатын психикалық процесс:",
+    options:["A) Қиял","B) Ойлау","C) Ес","D) Зейін","E) Қабылдау"],
+    answer:2,
+    explanation:"Ес — ақпаратты сақтау, қайта тану және жаңғырту процесі."
+  },
+  {
+    q:"19. Жүйелі білімдер қалыптастырушы ес түрі:",
+    options:["A) Қозғалыс есі","B) Бейнелік ес","C) Эмоциялық ес","D) Қысқа мерзімді ес","E) Оперативті ес"],
+    answer:1,
+    explanation:"Берілген база бойынша жүйелі білімдер қалыптастырушы ес түрі — бейнелік ес."
+  },
+  {
+    q:"20. Оқушының білім алуын қолдау үшін сұрақ қоюдың түрлері:",
+    options:["A) Жабық және ашық","B) Түрткі болу, сынақтан өткізу","C) Тек тест сұрақтары","D) Тек қысқа сұрақтар","E) Тек бақылау сұрақтары"],
+    answer:1,
+    explanation:"Түрткі болу және сынақтан өткізу сұрақтары оқушының ойлауын қолдайды."
+  },
+  {
+    q:"21. Мұғалімнің ұстанымы:",
+    options:["A) Сабақ кестесі","B) Көзқарас, пікір","C) Оқулық мазмұны","D) Сынып журналы","E) Бағалау парағы"],
+    answer:1,
+    explanation:"Мұғалімнің ұстанымы оның көзқарасы мен пікірінен көрінеді."
+  },
+  {
+    q:"22. Проблемалық оқытудың мәні:",
+    options:["A) Оқушылардың танымдық іс-әрекетін ұйымдастыру","B) Оқушыларға дайын жауап беру","C) Тек жаттау жұмысын жүргізу","D) Сабақты қысқарту","E) Оқушыны бақылаусыз қалдыру"],
+    answer:0,
+    explanation:"Проблемалық оқыту оқушылардың танымдық белсенділігін ұйымдастыруға негізделеді."
+  },
+  {
+    q:"23. Математикалық сауаттылық:",
+    options:["A) Формулаларды жаттау","B) Математикалық тұжырымдарды дәлелді негіздей білу","C) Тек есеп шығару жылдамдығы","D) Геометриялық фигураларды салу","E) Сандарды көшіру"],
+    answer:1,
+    explanation:"Математикалық сауаттылық — математикалық тұжырымдарды дәлелді негіздей білу."
+  },
+  {
+    q:"24. Сыни тұрғыдан ойлау нені қажет етеді?",
+    options:["A) Тек есте сақтауды","B) Аргументтерді, фактілерді","C) Тек мұғалімнің сөзін","D) Дайын жауапты","E) Баға қоюды"],
+    answer:1,
+    explanation:"Сыни ойлау дәлел, аргумент және фактілерді талдауды қажет етеді."
+  },
+  {
+    q:"25. Педагогикаға «білім беру» ұғымын алғаш енгізген ғалым:",
+    options:["A) Коменский","B) Ушинский","C) Песталоцци","D) Макаренко","E) Выготский"],
+    answer:2,
+    explanation:"Берілген база бойынша дұрыс жауап — Песталоцци."
+  },
+  {
+    q:"26. Ауызша және жазбаша тексеру, практикалық жұмыстар:",
+    options:["A) Оқыту әдістері","B) Бақылау түрлері","C) Тәрбие құралдары","D) Сабақ кезеңдері","E) Мотивация тәсілдері"],
+    answer:1,
+    explanation:"Ауызша, жазбаша тексеру және практикалық жұмыстар бақылау түрлеріне жатады."
+  },
+  {
+    q:"27. Жетістік критерийлерінің негізгі қызметі:",
+    options:["A) Бағалаудың әділ және шынайы болуы","B) Тапсырманы қиындату","C) Бағаны жасыру","D) Тек мұғалімді бағалау","E) Оқушыны салыстыру"],
+    answer:0,
+    explanation:"Жетістік критерийлері бағалаудың әділ әрі шынайы болуына көмектеседі."
+  },
+  {
+    q:"28. Алдын ала белгіленген жетістіктермен салыстыру үрдісі:",
+    options:["A) Дәстүрлі бағалау","B) Критериалды бағалау технологиясы","C) Диагностикалық бақылау","D) Қорытынды сабақ","E) Ауызша сұрау"],
+    answer:1,
+    explanation:"Критериалды бағалау алдын ала белгіленген критерийлермен салыстыруға негізделеді."
+  },
+  {
+    q:"29. Педагогикалық тәжірибедегі қадағалаудың түрі:",
+    options:["A) Алдын ала, ағымдық, мерзімдік","B) Тек қорытынды","C) Тек жазбаша","D) Тек ауызша","E) Тек практикалық"],
+    answer:0,
+    explanation:"Қадағалау алдын ала, ағымдық және мерзімдік болуы мүмкін."
+  },
+  {
+    q:"30. Білім мазмұнын анықтайтын нормативті құжаттар:",
+    options:["A) Сабақ жоспары","B) Мұғалім күнделігі","C) Білім беру стандарттары","D) Сынып журналы","E) Тәрбие жоспары"],
+    answer:2,
+    explanation:"Білім беру стандарттары білім мазмұнын анықтайтын негізгі нормативті құжат болып табылады."
+  }
+];
 
-questions.forEach((item, index) => {
-  let html = `<div class="question" id="question${index}">
-    <b>${item.q}</b>`;
+function renderEnglish(){
+  const container = document.getElementById("englishQuiz");
 
-  item.options.forEach((option, optionIndex) => {
-    html += `
-      <label>
-        <input type="checkbox" name="q${index}" value="${optionIndex}">
-        ${option}
-      </label>
-    `;
+  englishQuestions.forEach((item, index) => {
+    let html = `<div class="question" id="englishQuestion${index}">
+      <b>${item.q}</b>`;
+
+    item.options.forEach((option, optionIndex) => {
+      html += `
+        <label>
+          <input type="checkbox" name="english${index}" value="${optionIndex}">
+          ${option}
+        </label>
+      `;
+    });
+
+    html += `<div id="englishExplanation${index}"></div>`;
+    html += `</div>`;
+
+    container.innerHTML += html;
   });
+}
 
-  html += `<div id="explanation${index}"></div>`;
-  html += `</div>`;
+function renderPedagogy(){
+  const container = document.getElementById("pedagogyQuiz");
 
-  quiz.innerHTML += html;
-});
+  pedagogyQuestions.forEach((item, index) => {
+    let html = `<div class="question" id="pedagogyQuestion${index}">
+      <b>${item.q}</b>`;
+
+    item.options.forEach((option, optionIndex) => {
+      html += `
+        <label>
+          <input type="radio" name="pedagogy${index}" value="${optionIndex}">
+          ${option}
+        </label>
+      `;
+    });
+
+    html += `<div id="pedagogyExplanation${index}"></div>`;
+    html += `</div>`;
+
+    container.innerHTML += html;
+  });
+}
 
 function arraysEqual(a, b){
   if(a.length !== b.length) return false;
@@ -689,28 +794,39 @@ function arraysEqual(a, b){
   return true;
 }
 
-function getSelectedAnswers(index){
-  const checked = document.querySelectorAll(`input[name="q${index}"]:checked`);
+function getSelectedCheckboxes(name){
+  const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
   return Array.from(checked).map(input => Number(input.value));
 }
 
+function getSelectedRadio(name){
+  const selected = document.querySelector(`input[name="${name}"]:checked`);
+  return selected ? Number(selected.value) : null;
+}
+
 function formatAnswers(indexes, options){
-  if(indexes.length === 0){
+  if(Array.isArray(indexes)){
+    if(indexes.length === 0) return "Жауап берілмеді";
+    return indexes.map(i => options[i]).join("<br>");
+  }
+
+  if(indexes === null){
     return "Жауап берілмеді";
   }
 
-  return indexes.map(i => options[i]).join("<br>");
+  return options[indexes];
 }
 
 function checkAnswers(){
-  let score = 0;
+  let englishScore = 0;
+  let pedagogyScore = 0;
 
-  questions.forEach((item, index) => {
-    const userAnswers = getSelectedAnswers(index);
+  englishQuestions.forEach((item, index) => {
+    const userAnswers = getSelectedCheckboxes(`english${index}`);
     const isCorrect = arraysEqual(userAnswers, item.answer);
 
     if(isCorrect){
-      score++;
+      englishScore++;
     }
 
     const explanationBlock = `
@@ -734,18 +850,48 @@ function checkAnswers(){
       </div>
     `;
 
-    document.getElementById(`explanation${index}`).innerHTML = explanationBlock;
+    document.getElementById(`englishExplanation${index}`).innerHTML = explanationBlock;
   });
+
+  pedagogyQuestions.forEach((item, index) => {
+    const userAnswer = getSelectedRadio(`pedagogy${index}`);
+    const isCorrect = userAnswer === item.answer;
+
+    if(isCorrect){
+      pedagogyScore++;
+    }
+
+    const explanationBlock = `
+      <div class="explanation">
+        <p class="${isCorrect ? "correct" : "wrong"}">
+          ${isCorrect ? "✔ Дұрыс" : "✘ Қате"} — ${item.q}
+        </p>
+
+        <b>Дұрыс жауап:</b><br>
+        ${item.options[item.answer]}<br><br>
+
+        <b>Сіздің жауабыңыз:</b><br>
+        ${userAnswer !== null ? item.options[userAnswer] : "Жауап берілмеді"}<br><br>
+
+        <b>Түсіндірме:</b> ${item.explanation}
+      </div>
+    `;
+
+    document.getElementById(`pedagogyExplanation${index}`).innerHTML = explanationBlock;
+  });
+
+  const totalScore = englishScore + pedagogyScore;
+  const totalQuestions = englishQuestions.length + pedagogyQuestions.length;
 
   let level = "";
   let messageKaz = "";
   let messageRus = "";
 
-  if(score <= 7){
+  if(totalScore <= 20){
     level = "Бастапқы деңгей / Начальный уровень";
     messageKaz = "Сізге әлі көбірек дайындық керек.";
     messageRus = "Вам нужно ещё больше подготовиться.";
-  } else if(score <= 14){
+  } else if(totalScore <= 38){
     level = "Орташа деңгей / Средний уровень";
     messageKaz = "Негізгі түсінік бар, бірақ қосымша қайталау қажет.";
     messageRus = "Базовое понимание есть, но нужна дополнительная практика.";
@@ -757,10 +903,16 @@ function checkAnswers(){
 
   const finalBlock = `
     <div class="result-box">
-      <h2>Нәтижеңіз: ${score}/${questions.length}</h2>
+      <h2>Жалпы нәтижеңіз: ${totalScore}/${totalQuestions}</h2>
       <h2>${level}</h2>
       <p>${messageKaz}</p>
       <p>${messageRus}</p>
+
+      <div class="score-grid">
+        <div class="score-item">Professional English: ${englishScore}/${englishQuestions.length}</div>
+        <div class="score-item">Педагогика: ${pedagogyScore}/${pedagogyQuestions.length}</div>
+        <div class="score-item">Барлығы: ${totalScore}/${totalQuestions}</div>
+      </div>
     </div>
 
     <div class="contact-box">
@@ -780,10 +932,13 @@ function checkAnswers(){
 
   document.getElementById("results").innerHTML = finalBlock;
 
-  document.getElementById("question0").scrollIntoView({
+  document.getElementById("englishQuestion0").scrollIntoView({
     behavior:"smooth"
   });
 }
+
+renderEnglish();
+renderPedagogy();
 </script>
 
 </body>
